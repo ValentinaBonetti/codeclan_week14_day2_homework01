@@ -10,6 +10,7 @@ class SongsContainer extends React.Component {
       currentGenre: null
     };
     // bindings:
+    this.handleGenreSelected = this.handleGenreSelected.bind(this);
 
   }
 
@@ -19,11 +20,17 @@ class SongsContainer extends React.Component {
      .then(data => this.setState({songs: data.feed.entry}))
   }
 
+  handleGenreSelected(genre) {
+    this.setState({currentGenre: genre})
+  }
+
   render() {
     return (
       <div>
         <h1>top 20</h1>
-        <SongsList songs={this.state.songs}/>
+        <GenreSelector songs={this.state.songs}
+                       onGenreSelected={this.handleGenreSelected}/>
+        <SongsList songs={this.state.songs} genre={this.state.currentGenre}/>
       </div>
     )
   }

@@ -4,7 +4,7 @@ const SongRow = (props) => {
 
   return (
     <div className="song">
-      <h4>{props.chartPosition} {props.title} </h4>
+      <li>n.{props.chartPosition}: {props.title} by {props.author}</li>
     </div>
   )
 }
